@@ -46,6 +46,7 @@ public class ChannelManager {
     }
 
     public synchronized ThreadChannel getChannel(String name) {
+
         if(channels.containsKey(name))
             return channels.get(name);
         else return null;

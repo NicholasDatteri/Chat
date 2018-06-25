@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.net.*;
-import java.util.logging.Logger;
 public class ChatServer extends Thread {
 
     private int port;

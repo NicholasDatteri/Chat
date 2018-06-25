@@ -1,6 +1,5 @@
 
 import java.io.IOException;
-import java.sql.Time;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -42,7 +41,7 @@ public class DefaultChatProtocol extends ChatProtocol {
         }
     }
     public void startMessage(ThreadChannel ch){
-        ch.send("Benvenuto nella chat, i comandi sono /time /list /quit /user /msg \n");
+        ch.send("Benvenuto nella chat, i comandi sono  /list /quit /user /msg \n");
     }
     protected void broadcast(String name, String msg, boolean mysend)
     {
@@ -77,7 +76,7 @@ public class DefaultChatProtocol extends ChatProtocol {
     }
     private class Msg implements Command{
         public void execute(ThreadChannel channel, Matcher match) {
-            System.out.println("Lancio MSG");
+            System.out.println("Lancio msg: "+ match.group(2)+" da parte di: "+channel.getName());
             if(channel.isLogin()) {
                 broadcast(channel.getName().toLowerCase(),"#"+channel.getName()+" "+match.group(2),true);
             }else {
@@ -108,7 +107,7 @@ public class DefaultChatProtocol extends ChatProtocol {
         }
     }
     public interface Command {
-        public void execute(ThreadChannel channel, Matcher match);
+         void execute(ThreadChannel channel, Matcher match);
     }
     public static void main(String [] argv) throws IOException {
         ChannelManager manager = new ChannelManager();
